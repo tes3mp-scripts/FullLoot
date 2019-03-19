@@ -29,15 +29,16 @@ FullLoot.defaultConfig = {
             "f/furn_shrine_vivec_01.nif"
         },
         packetType = "place",
-        type = "miscellaneous"
+        type = "miscellaneous",
+        script = "noPickUp"
     },
     offset = {
         posX = 0,
         posY = 0,
-        posZ = 0,
+        posZ = -25,
         rotX = 0,
         rotY = 0,
-        rotZ = 0
+        rotZ = math.pi
     },
     collision = true,
     despawn = false,
@@ -100,7 +101,8 @@ function FullLoot.makeRecords(pid)
     local guiseId = recordStore:GenerateRecordId()
     recordStore.data.generatedRecords[guiseId] = {
         name = name,
-        model = model
+        model = model,
+        script = FullLoot.config.guise.script
     }
 
     recordStore:Save()
@@ -204,7 +206,7 @@ function FullLoot.OnServerPostInit(eventStatus)
             if dtime > FullLoot.config.despawnTime then
                 FullLoot.destroyDeathContainer(instanceId)
             else
-                FullLoot.makeDespawnTimer(instanceId,dtime)
+                FullLoot.makeDespawnTimer(instanceId, dtime)
             end
         end
     end
