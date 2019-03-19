@@ -217,11 +217,13 @@ function FullLoot.OnServerExit(eventStatus)
 end
 
 function FullLoot.CFOnContainer(eventStatus, pid, instanceId)
-    if
-        FullLoot.isPlayerLoot(instanceId) and
-        FullLoot.isContainerEmpty(instanceId)
-    then
-        FullLoot.destroyDeathContainer(instanceId)
+    if eventStatus.validCustomHandlers then
+        if
+            FullLoot.isPlayerLoot(instanceId) and
+            FullLoot.isContainerEmpty(instanceId)
+        then
+            FullLoot.destroyDeathContainer(instanceId)
+        end
     end
 end
 
