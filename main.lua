@@ -107,10 +107,6 @@ function FullLoot.makeRecords(pid)
 
     --send custom records to all necessary players
     recordStore:LoadGeneratedRecords(pid, recordStore.data.generatedRecords, {guiseId}, true)
-    --[[for _, tpid in pairs(cell.visitors) do
-        tes3mp.LogMessage(enumerations.log.INFO, "[FullLoot] Sending generated record to "..tpid.."\n")
-        recordStore:LoadGeneratedRecords(tpid, recordStore.data.generatedRecords, {guiseId})
-    end]]
     
     --make framework record
     return ContainerFramework.createRecord(
