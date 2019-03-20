@@ -12,7 +12,7 @@ FullLoot.defaultConfig = {
         type = "creature"
     },
     guise = {
-        nameSuffix = "'s grave",
+        name = "%s's grave",
         models = {
             "f/furn_shrine_aralor_01.nif",
             "f/furn_shrine_delyn_01.nif",
@@ -90,7 +90,7 @@ end
 function FullLoot.makeRecords(pid)
     local cell = LoadedCells[tes3mp.GetCell(pid)]    
 
-    local name = Players[pid].accountName .. FullLoot.config.guise.nameSuffix
+    local name = string.format(FullLoot.config.guise.accountName, Players[pid].accountName)
 
     --pick a random model
     local models = FullLoot.config.guise.models
