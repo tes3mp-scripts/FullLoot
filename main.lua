@@ -90,7 +90,7 @@ end
 function FullLoot.makeRecords(pid)
     local cell = LoadedCells[tes3mp.GetCell(pid)]    
 
-    local name = string.format(FullLoot.config.guise.accountName, Players[pid].accountName)
+    local name = string.format(FullLoot.config.guise.name, Players[pid].accountName)
 
     --pick a random model
     local models = FullLoot.config.guise.models
