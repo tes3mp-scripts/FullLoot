@@ -61,7 +61,7 @@ function FullLoot.getRandom(ceiling)
     math.random()
     math.random()
     
-    return math.random(1,ceiling)
+    return math.random(1, ceiling)
 end
 
 
@@ -88,7 +88,7 @@ function FullLoot.checkContainerRecord()
 end
 
 function FullLoot.makeRecords(pid)
-    local cell = LoadedCells[tes3mp.GetCell(pid)]    
+    local cell = LoadedCells[tes3mp.GetCell(pid)]
 
     local name = string.format(FullLoot.config.guise.name, Players[pid].accountName)
 
@@ -157,7 +157,19 @@ function FullLoot.createDeathContainer(pid)
         location[index] = value + FullLoot.config.offset[index]
     end
 
-    local instanceId = ContainerFramework.createContainerAtLocation(recordId, tes3mp.GetCell(pid), location)
+    local cellDescription = tes3mp.GetCell(pid)
+
+    local tempLoad = false
+    if LoadedCells[cellDescription] == nil then
+        tempLoad = true
+        logicHandler.LoadCell(cellDescription)
+    end
+
+    local instanceId = ContainerFramework.createContainerAtLocation(recordId, cellDescription, location)
+
+    if tempLoad then
+        logicHandler.UnloadCell(cellDescription)
+    end
 
     FullLoot.data.instances[instanceId] = os.time()
 
@@ -188,7 +200,7 @@ function FullLoot.emptyPlayerInventory(pid)
 end
 
 
-function FullLoot.OnPlayerDeathValidator(eventStatus,pid)
+function FullLoot.OnPlayerDeathValidator(eventStatus, pid)
     if next(Players[pid].data.inventory) ~= nil or next(Players[pid].data.equipment) ~= nil then
         local instanceId = FullLoot.createDeathContainer(pid)
         
