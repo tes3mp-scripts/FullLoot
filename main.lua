@@ -245,3 +245,6 @@ customEventHooks.registerHandler("OnServerExit", FullLoot.OnServerExit)
 customEventHooks.registerValidator("OnPlayerDeath", FullLoot.OnPlayerDeathValidator)
 
 customEventHooks.registerHandler("ContainerFramework_OnContainer", FullLoot.CFOnContainer)
+
+
+return FullLoot
