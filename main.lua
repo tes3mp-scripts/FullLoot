@@ -54,13 +54,6 @@ FullLoot.defaultData = {
 }
 
 function FullLoot.getRandom(ceiling)
-    math.randomseed(os.time())
-
-    --these numbers are not very random
-    math.random()
-    math.random()
-    math.random()
-    
     return math.random(1, ceiling)
 end
 
