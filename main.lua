@@ -180,6 +180,12 @@ function FullLoot.destroyDeathContainer(instanceId)
     end
 end
 
+function FullLoot.destroyAllDeathContainers()
+    for instanceId in pairs(FullLoot.data.instances) do
+        FullLoot.destroyDeathContainer(instanceId)
+    end
+end
+
 function FullLoot.fillDeathContainer(pid, instanceId, inventory)
     ContainerFramework.setInventory(instanceId, inventory)
 end

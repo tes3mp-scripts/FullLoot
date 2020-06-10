@@ -2,6 +2,9 @@ Empties player's inventory on death and spawns a container with its contents, av
 
 Requires [DataManager](https://github.com/tes3mp-scripts/DataManager) and [ContainerFramework](https://github.com/tes3mp-scripts/ContainerFramework)!
 
+If you are writing your own script which uses FullLoot, you can call this function instead of using standard despawn timer.
+* `FullLoot.destroyAllDeathContainers()`
+
 You can find the configuration file in `server/data/custom/__config_FullLoot.json`.
 * `container` parameters of the container permanent record to make for use in `ContainerFramework`.
   * `refId`
